@@ -67,3 +67,13 @@ function FormulaireControle() {
 }
 
 export default FormulaireControle;
+
+
+
+
+// !/\S+@\S+\.\S+/.test(value)
+
+
+/\S+@\S+\.\S+/.test(value)
+
+

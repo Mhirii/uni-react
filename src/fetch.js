@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-
 
 function App() {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-
-
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/posts')
-			.then(response => {
-				setData(response.data);
+		fetch('https://jsonplaceholder.typicode.com/posts')
+			.then(response => response.json()) // Convertit la réponse en JSON
+			.then(data => {
+				setData(data);
 				setLoading(false);
 			})
 			.catch(error => {
 				console.error('Erreur :', error);
 				setLoading(false);
 			});
-	}, []);
-
-
+	}, []); // Tableau vide : exécuté une seule fois au montage
 
 	if (loading) {
 		return <div>Chargement...</div>;
 	}
-
-
 
 	return (
 		<div>
@@ -41,8 +33,4 @@ function App() {
 	);
 }
 
-
-
 export default App;
-
-
